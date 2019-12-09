@@ -15,7 +15,8 @@ def prebid(user):
     options.add_argument('--incognito')
     options.add_argument('--headless') # for server
     options.add_argument('--no-sandbox')
-    driver = webdriver.Chrome(executable_path="../chromedriver.exe", chrome_options=options)
+    #driver = webdriver.Chrome(executable_path="../chromedriver.exe", chrome_options=options)
+    driver = webdriver.Chrome(chrome_options=options)
     driver.get(url)
     driver.find_element_by_name('UserName').send_keys(user.username)
     select = Select(driver.find_element_by_name('Domain'))
@@ -42,7 +43,9 @@ def add_course(driver):
         flag = False
     finally:
         driver.quit()
-        return str(message), flag
+        #message = unicode(message, 'utf-8')
+	message = message.encode('utf-8')
+        return message, flag
 
 def bid(user, target_time, messages, flags, index):
     driver = prebid(user)
