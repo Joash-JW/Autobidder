@@ -13,7 +13,7 @@ def prebid(user):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--incognito')
-    options.add_argument('--headless')
+    #options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     driver = webdriver.Chrome(executable_path="../chromedriver.exe", chrome_options=options)
     driver.get(url)
@@ -34,7 +34,7 @@ def add_course(driver):
     try:
         element_present = expected_conditions.presence_of_element_located((By.ID, 'ui_body_container'))
         WebDriverWait(driver, 60).until(element_present)
-        driver.find_element_by_xpath("//input[@value='Confirm to Add Course(s) into STARS']").click()
+        driver.find_element_by_xpath("//input[@value='Confirm to add course(s)']").click()
         message = driver.page_source
         flag = True
     except Exception as e:
