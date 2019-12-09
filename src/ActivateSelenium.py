@@ -13,9 +13,10 @@ def prebid(user):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--incognito')
-    #options.add_argument('--headless')
+    options.add_argument('--headless') # for server
     options.add_argument('--no-sandbox')
-    driver = webdriver.Chrome(executable_path="../chromedriver.exe", chrome_options=options)
+    #driver = webdriver.Chrome(executable_path="../chromedriver.exe", chrome_options=options)
+    driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver.exe", chrome_options=options) # for server
     driver.get(url)
     driver.find_element_by_name('UserName').send_keys(user.username)
     select = Select(driver.find_element_by_name('Domain'))
