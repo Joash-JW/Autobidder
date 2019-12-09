@@ -44,8 +44,8 @@ def add_course(driver):
     finally:
         driver.quit()
         #message = unicode(message, 'utf-8')
-	message = message.encode('utf-8')
-        return message, flag
+	    #message = message.encode('utf-8')
+        return str(message), flag
 
 def bid(user, target_time, messages, flags, index):
     driver = prebid(user)
